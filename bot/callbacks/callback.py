@@ -1,12 +1,12 @@
 from aiogram import types, Router, F
 
-from callbacks import text_info, text_sub, text_profile
+from callbacks import text_info, text_sub
 
 router = Router()
 
 @router.callback_query(F.data == "main_menu:profile")
 async def callback_data_profile(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(f"{text_profile()}") # return profile
+    await callback.answer("soon...") # return profile
 
 
 @router.callback_query(F.data == "main_menu:buy_sub")
@@ -20,5 +20,5 @@ async def callback_data_info(callback: types.CallbackQuery) -> None:
 
 
 @router.callback_query(F.data == "main_menu:cancel")
-async def callback_data_cancel(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(f"") # cancel -> return first menu
+async def callback_data_main_menu_cancel(callback: types.CallbackQuery) -> None:
+    await callback.message.edit_text(f"{}")
