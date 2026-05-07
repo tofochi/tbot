@@ -10,9 +10,10 @@ def text_profile() -> str:
     message = """Профиль"""
     return message
 
-def text_start(name: str, last_name: str) -> str:
-    message = f"""👋 Привет, {name} {last_name}! Воспользуйся меню снизу 👇"""
-
-def text_cancel() -> str:
-    message = """"""
+def text_start(name: str, lastname: str) -> str:
+    message = f"""👋 Привет, {name} {lastname}! Воспользуйся меню снизу 👇"""
     return message
+
+# def text_cancel() -> str:
+#     message = """"""
+#     return message
