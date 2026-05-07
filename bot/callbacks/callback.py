@@ -3,11 +3,13 @@ from aiogram import types, Router, F
 from callbacks import text_info, text_sub, text_start
 from callbacks import main_menu_cancel, main_menu
 
+from bot.other.texts import text_profile
+
 router = Router()
 
 @router.callback_query(F.data == "main_menu:profile")
 async def callback_data_profile(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text("soon...", reply_markup=main_menu_cancel()) # return profile
+    await callback.message.edit_text(F"{text_profile()}", reply_markup=main_menu_cancel()) # return profile
 
 
 @router.callback_query(F.data == "main_menu:buy_sub")

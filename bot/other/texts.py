@@ -10,7 +10,7 @@ def text_profile(name: str, requests: int, sub_status: str, id: int) -> str:
     message = f"""
 📊Профиль 👇 
     
-╔ Name: {name}
+╔ Name: {name} 
 ╠ Запросы: {requests}
 ╠ Sub: {sub_status}
 ╚ ID: {id}
