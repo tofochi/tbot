@@ -15,3 +15,19 @@ def main_menu_cancel():
     builder.button(text="↩ Отмена", callback_data="main_menu:cancel")
     builder.adjust(1)
     return builder.as_markup()
+
+
+def find_menu():
+    builder = InlineKeyboardBuilder()
+    builder.button(text="🔍 OSINT поиск", callback_data="find_menu:osint_search")
+    builder.button(text="📁 БД поиск", callback_data="find_menu:database_search")
+    builder.button(text="📥 Отправить письмо", callback_data="find_menu:send_mail")
+    builder.button(text="🥷 Генерация username", callback_data="find_menu:generate_username")
+    builder.adjust(2, 1, 1)
+    return builder.as_markup()
+
+def find_menu_cancel():
+    builder = InlineKeyboardBuilder()
+    builder.button(text="↩ Отмена", callback_data="main_menu:cancel")
+    builder.adjust(1)
+    return builder.as_markup()

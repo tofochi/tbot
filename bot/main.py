@@ -9,7 +9,7 @@ from aiogram.client.default import DefaultBotProperties
 
 # aiogram routers imports
 from handlers import start
-from callbacks import callback
+from callbacks import main_menu_callback
 
 # config imports
 from config import load_settings, check_settings
