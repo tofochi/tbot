@@ -33,7 +33,7 @@ async def callback_data_info(callback: types.CallbackQuery) -> None:
 
 @router.callback_query(F.data == "main_menu:find_menu")
 async def callback_data_find_menu(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(f"{text_find_menu()}", reply_markup=)
+    await callback.message.edit_text(f"{text_find_menu()}", reply_markup=main_menu_cancel())
 
 
 @router.callback_query(F.data == "main_menu:cancel")
