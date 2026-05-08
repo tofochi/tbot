@@ -9,7 +9,7 @@ from aiogram.client.default import DefaultBotProperties
 
 # aiogram routers imports
 from handlers import start
-from callbacks import main_menu_callback
+from callbacks import main_menu_callback, find_menu_callback
 
 # config imports
 from config import load_settings, check_settings
@@ -27,7 +27,8 @@ dp = Dispatcher()
 # include routers
 # ПРИМЕЧАНИЕ!!! Если создал новый файл, то добавь его роутер, иначе весь код в этом файле не будет работать
 dp.include_router(start.router) # к примеру вот так
-dp.include_router(callback.router)
+dp.include_router(main_menu_callback.router)
+dp.include_router(find_menu_callback.router)
 
 
 async def main() -> None:
