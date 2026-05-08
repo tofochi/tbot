@@ -7,7 +7,7 @@ def main_menu():
     builder.button(text="📲 Меню", callback_data="main_menu:find_menu")
     builder.button(text="📕 Информация", callback_data="main_menu:info")
     builder.button(text="💳 Купить подписку", callback_data="main_menu:buy_sub")
-    builder.button(text="🆘 Поддержка", callback_data="main_menu:send_message_to_support")
+    builder.button(text="🆘 Поддержка", callback_data="main_menu:send_message_to_support", url="tg://user?id=8433550795")
     builder.adjust(2, 2, 1)
     return builder.as_markup()
 

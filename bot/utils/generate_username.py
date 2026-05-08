@@ -23,13 +23,13 @@ async def check_username(username: str) -> bool:
             return False
 
 
-async def main():
-    while True:
-        username = generate_username(5)
-        is_taken = await check_username(username)
-
-        if not is_taken:
-            print(username)
-            return username
-
-asyncio.run(main())
+# async def main():
+#     while True:
+#         username = generate_username(5)
+#         is_taken = await check_username(username)
+#
+#         if not is_taken:
+#             print(username)
+#             return username
+#
+# asyncio.run(main())

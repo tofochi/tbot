@@ -4,12 +4,15 @@ import logging
 
 # aiogram imports
 from aiogram.enums import ParseMode
-from aiogram import Bot, Dispatcher, F, types
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 
 # aiogram routers imports
 from handlers import start
+
 from callbacks import main_menu_callback, find_menu_callback, cancel_callbacks
+
+from database.database import Database
 
 # config imports
 from config import load_settings, check_settings
@@ -22,7 +25,10 @@ settings = load_settings()
 check_settings()
 
 bot = Bot(token=settings.bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+
 dp = Dispatcher()
+db = Database() # initialize Class Database
+
 
 # include routers
 # ПРИМЕЧАНИЕ!!! Если создал новый файл, то добавь его роутер, иначе весь код в этом файле не будет работать
@@ -33,7 +39,7 @@ dp.include_router(cancel_callbacks.router)
 
 
 async def main() -> None:
-
+    await db.create_db() # create database
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

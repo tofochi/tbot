@@ -33,4 +33,4 @@ async def callback_data_osint_search(callback: types.CallbackQuery) -> None:
 
 @router.callback_query(F.data == "find_menu:generate_username")
 async def callback_data_osint_search(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(text=text_find_menu_database_search(), reply_markup=find_menu_cancel())
+    await callback.message.edit_text(text=text_find_menu_database_search(), reply_markup=find_menu_cancel()) # TODO: часть киселя

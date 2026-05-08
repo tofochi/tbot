@@ -2,9 +2,7 @@ from aiogram import types, Router, F
 
 from callbacks import (text_main_menu_info,
                        text_main_menu_sub,
-                       text_main_menu_start,
                        text_main_menu_profile,
-                       text_main_menu_support,
                        text_find_menu,
                        )
 from callbacks import main_menu, main_menu_cancel
@@ -34,7 +32,7 @@ async def callback_data_info(callback: types.CallbackQuery) -> None:
 
 @router.callback_query(F.data == "main_menu:send_message_to_support")
 async def callback_data_send_to_support(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(text_main_menu_support(), reply_markup=main_menu_cancel()) # return support info
+    await callback.message.answer(reply_markup=main_menu_cancel()) # return support info
 
 
 @router.callback_query(F.data == "main_menu:find_menu")
