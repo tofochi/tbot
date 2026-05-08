@@ -3,3 +3,4 @@ pydantic-settings==2.14.0
 dotenv==0.9.9
 logging==0.4.9.6
 httpx==0.28.1
+aiosqlite==0.22.1

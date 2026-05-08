@@ -1,5 +1,7 @@
 def text_main_menu_info() -> str:
-    message = """🔎 Augusta Deglava iela 100, Latgales priekšpilsēta, Rīga, LV-1082."""
+    message = """
+🔎 python, aiogram 3.x
+🥩 Augusta Deglava iela 100, Latgales priekšpilsēta, Rīga, LV-1082."""
     return message
 
 
@@ -11,6 +13,7 @@ def text_main_menu_sub() -> str:
 def text_main_menu_profile(username: str, requests: int, sub_status: str, user_id: int) -> str:
     message = f"""
 📊Профиль ⌵
+
 ┏ Ваш ник: <code>{username}</code>
 ┣ Ваш id: <code>{user_id}</code>
 ┣ Запросы: <code>{requests}</code>
@@ -18,8 +21,13 @@ def text_main_menu_profile(username: str, requests: int, sub_status: str, user_i
     return message
 
 
-def text_main_menu_start(name: str, lastname: str) -> str:
+def text_main_menu_start(name: str, lastname: str | None) -> str:
     message = f"""👋 Привет, {name} {lastname}! Воспользуйся меню снизу 👇"""
+    return message
+
+
+def text_main_menu_support() -> str:
+    message = """Пиши создателю бота Фабрика Иллюзий""" # добавить юз или канал
     return message
 
 

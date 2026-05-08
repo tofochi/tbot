@@ -34,10 +34,3 @@ async def callback_data_osint_search(callback: types.CallbackQuery) -> None:
 @router.callback_query(F.data == "find_menu:generate_username")
 async def callback_data_osint_search(callback: types.CallbackQuery) -> None:
     await callback.message.edit_text(text=text_find_menu_database_search(), reply_markup=find_menu_cancel())
-
-
-@router.callback_query(F.data == "find_menu:cancel")
-async def callback_data_find_menu_cancel(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(text=f"{text_main_menu_start(
-        name=callback.from_user.first_name, 
-        lastname=callback.from_user.last_name)}", reply_markup=main_menu())
