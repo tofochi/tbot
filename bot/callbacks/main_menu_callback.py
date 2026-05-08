@@ -1,6 +1,12 @@
 from aiogram import types, Router, F
 
-from callbacks import text_main_menu_info, text_main_menu_sub, text_main_menu_start, text_main_menu_profile, text_find_menu
+from callbacks import (text_main_menu_info,
+                       text_main_menu_sub,
+                       text_main_menu_start,
+                       text_main_menu_profile,
+                       text_main_menu_support,
+                       text_find_menu,
+                       )
 from callbacks import main_menu, main_menu_cancel
 from callbacks import find_menu
 
@@ -28,17 +34,9 @@ async def callback_data_info(callback: types.CallbackQuery) -> None:
 
 @router.callback_query(F.data == "main_menu:send_message_to_support")
 async def callback_data_send_to_support(callback: types.CallbackQuery) -> None:
-    pass # TODO: Добавить логику (часть Артёма)
+    await callback.message.edit_text(text_main_menu_support(), reply_markup=main_menu_cancel()) # return support info
 
 
-@router.callback_query(F.data == "main_menu:cancel")
-async def callback_data_main_menu_cancel(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(f"{text_main_menu_start(
-        name=callback.from_user.first_name, 
-        lastname=callback.from_user.last_name)}", reply_markup=main_menu()) # cancel -> return start menu
-
-
-# main_menu:find_menu -> find_menu:...
 @router.callback_query(F.data == "main_menu:find_menu")
 async def callback_data_find_menu(callback: types.CallbackQuery) -> None:
-    await callback.message.edit_text(text_find_menu(), reply_markup=find_menu())
+    await callback.message.edit_text(text_find_menu(), reply_markup=find_menu()) # main_menu:find_menu -> find_menu:...
