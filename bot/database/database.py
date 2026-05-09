@@ -27,13 +27,13 @@ class Database:
     async def get_user(self, user_id: int) -> aiosqlite.Row | None:
         async with aiosqlite.connect(self.path) as db:
             db.row_factory = aiosqlite.Row
-            cursor = await db.execute("SELECT user_id FROM users WHERE user_id = ?", (user_id,))
+            cursor = await db.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
             return await cursor.fetchone()
 
 
     async def add_user(self, user_id: int,
                        balance: int = 0,
-                       requests: int = 0,
+                       requests: int = 3,
                        subscription_status: bool = False,
                        subscription_until: Optional[datetime] = None) -> bool:
         async with aiosqlite.connect(self.path) as db:

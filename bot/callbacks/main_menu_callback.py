@@ -7,16 +7,20 @@ from callbacks import (text_main_menu_info,
                        )
 from callbacks import main_menu, main_menu_cancel
 from callbacks import find_menu
+from callbacks import db, username_is_none, subscription_format
 
 router = Router()
 
 @router.callback_query(F.data == "main_menu:profile")
 async def callback_data_profile(callback: types.CallbackQuery) -> None:
+
+    user_data = await db.get_user(callback.from_user.id)
+
     await callback.message.edit_text(f"{text_main_menu_profile(
-        username=callback.from_user.first_name,
-        requests=1,
-        sub_status="активна до ...",
-        user_id=callback.from_user.id
+        username=username_is_none(callback.from_user.username),
+        requests=user_data["requests"],
+        sub_status=subscription_format(user_data["subscription_status"]),
+        user_id=callback.from_user.id,
     )}", reply_markup=main_menu_cancel()) # return profile
 
 

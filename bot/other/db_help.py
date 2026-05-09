@@ -15,3 +15,8 @@ def db_iso_format_to_date(date_iso_format: Optional[str]) -> Optional[datetime]:
     else:
         return None
 
+def subscription_format(bad_format: Optional[int]) -> Optional[str]:
+    if bad_format == 0:
+        return "Неактивна"
+    else:
+        return "Активна"
