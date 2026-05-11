@@ -8,9 +8,9 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 
 # aiogram routers imports
-from handlers import start
+from handlers import start, admin
 
-from callbacks import main_menu_callback, find_menu_callback, cancel_callbacks
+from callbacks import main_menu_callback, find_menu_callback, cancel_callbacks, admin_menu_callbacks
 
 from database.database import Database
 
@@ -33,9 +33,12 @@ db = Database() # initialize Class Database
 # include routers
 # ПРИМЕЧАНИЕ!!! Если создал новый файл, то добавь его роутер, иначе весь код в этом файле не будет работать
 dp.include_router(start.router) # к примеру вот так
+dp.include_router(admin.router)
+
 dp.include_router(main_menu_callback.router)
 dp.include_router(find_menu_callback.router)
 dp.include_router(cancel_callbacks.router)
+dp.include_router(admin_menu_callbacks.router)
 
 
 async def main() -> None:
@@ -49,3 +52,6 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         print(" ")
+
+
+# 1) TODO: Доделать админ панель (хотя бы половину)

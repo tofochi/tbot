@@ -35,6 +35,27 @@ def find_menu_cancel():
     return builder.as_markup()
 
 
+def admin_menu():
+    builder = InlineKeyboardBuilder()
+    builder.button(text="Сделать рассылку", callback_data="admin_menu:broadcast")
+    builder.button(text="Добавить подписку", callback_data="admin_menu:add_sub")
+    builder.button(text="Добавить запросов", callback_data="admin_menu:add_requests")
+    builder.button(text="История поиска", callback_data="admin_menu:check_history_search")
+    builder.button(text="Список пользователей", callback_data="admin_menu:check_list_users")
+    builder.button(text="Статистика пользователя", callback_data="admin_menu:check_statistics_user")
+    builder.adjust(2, 2, 1, 1)
+    return builder.as_markup()
+
+
+def admin_menu_cancel():
+    builder = InlineKeyboardBuilder()
+    builder.button(text="↩ Отмена", callback_data="admin_menu:cancel")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+
+
 # def support_menu():
 #     builder = InlineKeyboardBuilder()
 #     builder.button(text="Написать поддержке", callback_data="support_menu:send_message_to_support")

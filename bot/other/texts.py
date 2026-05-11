@@ -35,6 +35,10 @@ def text_find_menu() -> str:
     message = f"""Выбери действие ниже 👇"""
     return message
 
+def text_admin_menu(name: str, lastname: str | None) -> str:
+    message = f"""👋 Привет, {name} {lastname}! Выбери дейтсвие с админ-панелью 👇"""
+    return message
+
 
 def text_find_menu_osint_search() -> str:
     message = """таргет осинт"""

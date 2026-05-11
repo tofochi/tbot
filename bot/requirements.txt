@@ -4,3 +4,4 @@ dotenv==0.9.9
 logging==0.4.9.6
 httpx==0.28.1
 aiosqlite==0.22.1
+mailTm==0.0.81

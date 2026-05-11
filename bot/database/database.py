@@ -1,5 +1,6 @@
 from datetime import datetime
-from typing import Optional
+from sqlite3 import Row
+from typing import Optional, Any, AsyncGenerator
 
 from database import db_date_to_iso_format, db_iso_format_to_date
 
@@ -9,6 +10,7 @@ import aiosqlite
 class Database:
     def __init__(self):
         self.path = "database/dbs/users.db"
+
 
     async def create_db(self) -> None:
         async with aiosqlite.connect(self.path) as db:
@@ -24,11 +26,20 @@ class Database:
             )
             await db.commit()
 
+
     async def get_user(self, user_id: int) -> aiosqlite.Row | None:
         async with aiosqlite.connect(self.path) as db:
             db.row_factory = aiosqlite.Row
             cursor = await db.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
             return await cursor.fetchone()
+
+
+    async def get_all_users(self) -> AsyncGenerator[Row, Any]:
+        async with aiosqlite.connect(self.path) as db:
+            db.row_factory = aiosqlite.Row
+            cursor = await db.execute("SELECT * FROM users")
+            async for row in cursor:
+                yield row
 
 
     async def add_user(self, user_id: int,
